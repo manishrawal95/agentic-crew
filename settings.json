@@ -1,0 +1,75 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(PGPASSWORD='HolaAmigo@Barcelona' psql:*)",
+      "Bash(ls:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx next build:*)",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(python3:*)",
+      "Bash(python -m *)",
+      "Bash(pip install *)",
+      "Bash(curl:*)",
+      "Bash(sqlite3:*)",
+      "Bash(lsof:*)",
+      "Bash(wc:*)",
+      "Bash(chmod:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(gh pr *)",
+      "Bash(gh issue *)",
+      "Bash(gh api *)",
+      "WebSearch",
+      "mcp__ide__getDiagnostics"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(sudo *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/lint-after-edit.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash(git commit *)",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Before committing, verify: 1) No console.log/print debugging left in changed files. 2) No hardcoded localhost URLs. 3) No empty catch blocks. 4) No alert() calls (should be toast). 5) No secrets or API keys in code. Review the staged diff and flag any issues. If clean, approve. If issues found, list them."
+          }
+        ]
+      }
+    ],
+"TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "A teammate just completed a task. Review their work: 1) Does the implementation match the task description? 2) Are there any obvious issues, missing edge cases, or incomplete work? 3) Did they follow project conventions from CLAUDE.md? If issues found, create a follow-up task. If clean, approve."
+          }
+        ]
+      }
+    ]
+  }
+}
