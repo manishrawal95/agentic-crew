@@ -1,6 +1,6 @@
 # agentic-crew
 
-> **Program management for AI agents.** 13 specialized agents with defined roles, adversarial review loops, and automated quality gates -- organized the way a TPM organizes an engineering team.
+> **Program management for AI agents.** 12 specialized agents with defined roles, adversarial review loops, and automated quality gates -- organized the way a TPM organizes an engineering team.
 
 ---
 
@@ -14,9 +14,9 @@ Most Claude Code setups are a single CLAUDE.md file with a few instructions. Tha
 
 ## At a Glance
 
-| | Typical Claude Setup | forge.claude |
+| | Typical Claude Setup | agentic-crew |
 |---|---|---|
-| Agents | 1 general assistant | **13 specialized roles** |
+| Agents | 1 general assistant | **12 specialized roles** |
 | Design review | Manual, single-pass | **Adversarial** -- critic challenges designer |
 | Security | None | **Threat modeling** on every auth/API change |
 | Pre-commit | None | **Auto-blocks** hardcoded secrets, debug logs, empty catches |
@@ -44,9 +44,9 @@ cp -r agents skills rules hooks CLAUDE.md settings.json ~/.claude/
 
 ---
 
-## Agents (13)
+## Agents (12)
 
-The core of `forge.claude`. Each agent has a focused role -- no generalists.
+The core of `agentic-crew`. Each agent has a focused role -- no generalists.
 
 | Agent | Purpose | Model |
 |---|---|---|
@@ -65,7 +65,7 @@ The core of `forge.claude`. Each agent has a focused role -- no generalists.
 
 ### How the adversarial loop works
 
-For any UI task, `agentic-crew` runs a two-pass review automatically:
+For UI tasks, `agentic-crew` runs a two-pass review:
 
 ```
 design-thinking → [your code] → design-critic
