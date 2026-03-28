@@ -1,17 +1,14 @@
-# Product Development Agentic Crew
+# agentic-crew
 
-> **A production-grade multi-agent crew for Claude Code.**
-> 13 specialized agents. Adversarial design review. Automated security hooks. Built for developers who treat AI as a collaborator, not an autocomplete tool.
+> **Program management for AI agents.** 13 specialized agents with defined roles, adversarial review loops, and automated quality gates -- organized the way a TPM organizes an engineering team.
 
 ---
 
 ## Why This Exists
 
-Most Claude Code setups are a single CLAUDE.md file with a few instructions.
+Most Claude Code setups are a single CLAUDE.md file with a few instructions. That's like running a project with one generalist and no process.
 
-`agentic-crew` is a full **multi-agent engineering system** — specialized roles that debate decisions, challenge each other's output, catch bugs before they commit, and enforce consistency across every project you touch.
-
-It's the difference between asking one generalist a question and running it through a team of specialists.
+`agentic-crew` is a full **multi-agent orchestration system** -- specialized roles that debate decisions, challenge each other's output, catch bugs before they commit, and enforce consistency. Each agent has a defined scope, handoff protocol, and quality bar -- the same structure a program manager builds for human teams, applied to AI agents.
 
 ---
 
@@ -20,7 +17,7 @@ It's the difference between asking one generalist a question and running it thro
 | | Typical Claude Setup | forge.claude |
 |---|---|---|
 | Agents | 1 general assistant | **13 specialized roles** |
-| Design review | Manual, single-pass | **Adversarial** — critic challenges designer |
+| Design review | Manual, single-pass | **Adversarial** -- critic challenges designer |
 | Security | None | **Threat modeling** on every auth/API change |
 | Pre-commit | None | **Auto-blocks** hardcoded secrets, debug logs, empty catches |
 | AI feature work | Generic prompts | Dedicated `ai-architect` for LLM-native design |
@@ -49,13 +46,13 @@ cp -r agents skills rules hooks CLAUDE.md settings.json ~/.claude/
 
 ## Agents (13)
 
-The core of `forge.claude`. Each agent has a focused role — no generalists.
+The core of `forge.claude`. Each agent has a focused role -- no generalists.
 
 | Agent | Purpose | Model |
 |---|---|---|
 | `orchestrator` | Coordinates multi-agent debate for 3+ file changes | default |
-| `design-thinking` | Visual hierarchy and craft — runs **before** UI work | default |
-| `design-critic` | Adversarial review — runs **after** UI code is written | default |
+| `design-thinking` | Visual hierarchy and craft -- runs **before** UI work | default |
+| `design-critic` | Adversarial review -- runs **after** UI code is written | default |
 | `designer` | States, mobile, accessibility audit | default |
 | `code-reviewer` | Consistency, DRY, naming review | default |
 | `qa-engineer` | Edge cases and failure modes | default |
@@ -76,7 +73,7 @@ design-thinking → [your code] → design-critic
    revise  ←←←←←←←←←←←←←← critique + score
 ```
 
-`design-critic` doesn't just suggest — it challenges. You get a scored review with specific objections before anything ships.
+`design-critic` doesn't just suggest -- it challenges. You get a scored review with specific objections before anything ships.
 
 ---
 
@@ -113,7 +110,7 @@ Language and domain-specific guardrails enforced across every project.
 
 ## Hooks
 
-Automated checks that run at key moments — no manual triggers needed.
+Automated checks that run at key moments -- no manual triggers needed.
 
 | Hook | Event | Type | What It Catches |
 |---|---|---|---|
@@ -127,14 +124,14 @@ Automated checks that run at key moments — no manual triggers needed.
 
 Non-negotiables enforced across all projects:
 
-- **Think before coding** — plan first, implement second
+- **Think before coding** -- plan first, implement second
 - **Mobile-first** at 375px
-- **Descriptive error messages** — no generic "something went wrong"
+- **Descriptive error messages** -- no generic "something went wrong"
 - **No dead code or duplicates**
-- **TypeScript strict** — no `any`, ever
+- **TypeScript strict** -- no `any`, ever
 - **All 5 UI states**: loading, empty, error, partial, edge case
 - **Touch targets ≥ 44px**, input font ≥ 16px
-- **Toast notifications** — never `alert()`
+- **Toast notifications** -- never `alert()`
 
 ---
 
@@ -150,7 +147,7 @@ Non-negotiables enforced across all projects:
 
 Found a better agent prompt? A rule that should exist? PRs welcome.
 
-Open an issue describing what gap you hit — agent, skill, rule, or hook — and let's build it.
+Open an issue describing what gap you hit -- agent, skill, rule, or hook -- and let's build it.
 
 ---
 
